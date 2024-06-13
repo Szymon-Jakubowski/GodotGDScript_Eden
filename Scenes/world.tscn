@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dkl18c55uj5rl"]
 
-[ext_resource type="Texture2D" uid="uid://cewe5aetagt5e" path="res://addons/kenney_prototype_textures/dark/texture_04.png" id="4_2xxhw"]
+[ext_resource type="Texture2D" uid="uid://cewe5aetagt5e" path="res://addons/kenney_prototype_textures/dark/texture_04.png" id="1_wwhol"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t7gio"]
 sky_top_color = Color(0.427451, 0.0862745, 1, 1)
@@ -25,7 +25,7 @@ sdfgi_enabled = true
 size = Vector3(20, 1, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ihjm"]
-albedo_texture = ExtResource("4_2xxhw")
+albedo_texture = ExtResource("1_wwhol")
 
 [sub_resource type="BoxMesh" id="BoxMesh_qkr8p"]
 size = Vector3(20, 1, 20)
