@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkl18c55uj5rl"]
+
+[ext_resource type="Texture2D" uid="uid://cewe5aetagt5e" path="res://addons/kenney_prototype_textures/dark/texture_04.png" id="4_2xxhw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t7gio"]
+sky_top_color = Color(0.427451, 0.0862745, 1, 1)
+sky_horizon_color = Color(0.909804, 0.341176, 1, 1)
+sky_curve = 0.0512266
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+
+[sub_resource type="Sky" id="Sky_xsuw0"]
+sky_material = SubResource("ProceduralSkyMaterial_t7gio")
+
+[sub_resource type="Environment" id="Environment_31wcf"]
+background_mode = 2
+background_energy_multiplier = 1.4
+sky = SubResource("Sky_xsuw0")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+ssao_enabled = true
+sdfgi_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fa4mi"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ihjm"]
+albedo_texture = ExtResource("4_2xxhw")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qkr8p"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tvb38"]
+
+[sub_resource type="Sky" id="Sky_qeqyl"]
+sky_material = SubResource("PanoramaSkyMaterial_tvb38")
+
+[sub_resource type="Environment" id="Environment_7mfoe"]
+background_mode = 2
+sky = SubResource("Sky_qeqyl")
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_31wcf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.482298, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_fa4mi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
+material_override = SubResource("StandardMaterial3D_5ihjm")
+mesh = SubResource("BoxMesh_qkr8p")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.745953, 0.665999, 0, -0.665999, 0.745953, 0, 11.386, 16.0066)
+environment = SubResource("Environment_7mfoe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.822032, 0.551498, -0.141822, -0.170237, 0.475671, 0.862993, 0.5434, -0.685264, 0.484902, 0, 5.18185, 0)
+light_color = Color(0.996078, 0.407843, 1, 1)
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707107, 0.707107, 2.2638e-08, -0.5, -0.5, 0.707107, 0.5, 0.5, 0.707107, 0, 7, 0)
+light_color = Color(0.160784, 0.00784314, 0.14902, 1)
+light_energy = 2.5
